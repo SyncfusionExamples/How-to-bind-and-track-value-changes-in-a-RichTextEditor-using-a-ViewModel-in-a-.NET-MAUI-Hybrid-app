@@ -1,0 +1,27 @@
+﻿@page "/"
+
+@using Syncfusion.Blazor.RichTextEditor
+@using System.ComponentModel
+@implements IDisposable
+@inject ViewModel ViewModel
+
+<SfRichTextEditor @bind-Value="ViewModel.Text" SaveInterval="1">
+</SfRichTextEditor>
+
+
+@code {
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        ViewModel.PropertyChanged += OnValueChanged;
+    }
+
+    private void OnValueChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        StateHasChanged();
+    }
+    public void Dispose()
+    {
+        ViewModel.PropertyChanged -= OnValueChanged;
+    }
+}
