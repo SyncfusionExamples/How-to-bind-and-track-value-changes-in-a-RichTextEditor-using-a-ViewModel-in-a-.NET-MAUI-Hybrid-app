@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiBlazorRichTextEditor"
+             x:Class="MauiBlazorRichTextEditor.MainPage">
+
+    
+    <Grid RowDefinitions="50,Auto,100" WidthRequest="400">
+
+        <Label Text="Blazor RichTextEditor:" Grid.Row="0" TextColor="Gray" Margin="5" VerticalOptions="Center"/>
+
+        <BlazorWebView x:Name="blazorWebView" Grid.Row="1" HeightRequest="200" HostPage="wwwroot/index.html">
+            <BlazorWebView.RootComponents>
+                <RootComponent Selector="#app" ComponentType="{x:Type local:Components.Routes}" />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
+
+        <Grid RowDefinitions="40, *" Grid.Row="2" WidthRequest="400">
+            <Label Text="MAUI Label:" TextColor="Gray" Margin="5" VerticalOptions="Center"/>
+            <Label Grid.Row="1" TextType="Html" Text="{Binding Text}" TextColor="Black" Margin="5" VerticalOptions="Center"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>
