@@ -1,8 +1,8 @@
-This article demonstrates how to bind content to the [Blazor RichTextEditor](https://blazor.syncfusion.com/documentation/rich-text-editor/data-binding) in a .NET MAUI Hybrid application using a ViewModel. The approach ensures that any changes in the editor are reflected in the ViewModel, and those changes can be tracked and displayed within the `.NET MAUI UI`.
+This article demonstrates how to bind content to the [Blazor RichTextEditor](https://www.syncfusion.com/blazor-components/blazor-rich-text-editor) in a .NET MAUI Hybrid application using a ViewModel. The approach ensures that any changes in the editor are reflected in the ViewModel, and those changes can be tracked and displayed within the `.NET MAUI UI`.
 
 **ViewModel Implementation**
 
-To begin, create a ViewModel that implements `INotifyPropertyChanged`. This will allow the UI to respond to changes in the data model.
+To begin, create a ViewModel (e.g., `ViewModel.cs`) that implements `INotifyPropertyChanged`. This will allow the UI to respond to changes in the data model.
 
 ```csharp
 public class ViewModel : INotifyPropertyChanged
@@ -23,10 +23,12 @@ public class ViewModel : INotifyPropertyChanged
 }
 ```
 
-To complete the setup, ensure that the `ViewModel` is registered with the dependency injection container in the `.NET MAUI` application. This can be done in the `MauiProgram.cs` file:
+To complete the setup, ensure the `ViewModel` is registered with the dependency injection container in the `.NET MAUI` application. This can be done in the `MauiProgram.cs` file:
 
 ```csharp
+...
 builder.Services.AddSingleton<ViewModel>();
+...
 ```
 
 This registration allows the `ViewModel` to be injected into both the Blazor components and the .NET MAUI pages.
@@ -73,7 +75,7 @@ In this code:
 
 **MAUI Label Binding**
 
-To display the content of the RichTextEditor in a MAUI Label, you can use the following XAML and C# code:
+To display the content of the RichTextEditor in a MAUI Label, you can refer to the below code:
 
 **XAML:**
 ```xml
@@ -84,12 +86,9 @@ To display the content of the RichTextEditor in a MAUI Label, you can use the fo
 ```csharp
 public partial class MainPage : ContentPage
 {
-    private readonly ViewModel _viewModel;
-
     public MainPage(ViewModel viewModel)
     {
         InitializeComponent();
-        _viewModel = viewModel;
         BindingContext = _viewModel;
     }
 }
@@ -97,4 +96,4 @@ public partial class MainPage : ContentPage
 
 **Output**
 
-![image.png](https://support.syncfusion.com/kb/agent/attachment/article/17109/inline?token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI4MTc1Iiwib3JnaWQiOiIzIiwiaXNzIjoic3VwcG9ydC5zeW5jZnVzaW9uLmNvbSJ9.DOxJRcAi-FGxM6o3pB0PG0RYJtMpMGMAe25G-H0CTms)
+![RichTextEditor.png](https://support.syncfusion.com/kb/agent/attachment/article/17109/inline?token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI4MTk5Iiwib3JnaWQiOiIzIiwiaXNzIjoic3VwcG9ydC5zeW5jZnVzaW9uLmNvbSJ9.7L4aGHuSSBIrh6LKfuQAXA6lKWbS85xx2DOJK746g_A)
